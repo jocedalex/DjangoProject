@@ -24,6 +24,7 @@ class Item(models.Model):
     name=models.CharField(blank=False,max_length=15,null=False,verbose_name="Name")
     description=models.CharField(blank=False,max_length=50,null=False,verbose_name="Description")
     category=models.ForeignKey(Category,blank=False,null=False,on_delete=models.CASCADE,verbose_name="Category")
+    picture=models.CharField(null=False,default='',verbose_name='Picture',max_length=20)
     price=models.FloatField(blank=False,null=False,verbose_name="Price")
     available=models.IntegerField(verbose_name="Available units")
 
