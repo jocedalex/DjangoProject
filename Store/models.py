@@ -45,3 +45,5 @@ class Order(models.Model):
     item=models.ForeignKey(Item,blank=False,null=False,verbose_name="Item",on_delete=models.PROTECT)
     cart=models.ForeignKey(Cart,blank=False,null=False,verbose_name="Cart",on_delete=models.PROTECT)
     status=models.CharField(max_length=1)
+    date=models.DateField(blank=False,null=False,verbose_name="Creation Date")
+    delivery_date=models.DateField(blank=False,null=False,verbose_name="Delivery Date")

@@ -1,6 +1,6 @@
 from msilib.schema import ListView
 from django.contrib import admin
-from Store.models import Customer,Choosen,Cart,Category,Item,Order
+from .models import Customer,Choosen,Cart,Category,Item,Order
 
 # Register your models here.
 @admin.register(Customer)
