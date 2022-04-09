@@ -1,14 +1,8 @@
 from msilib.schema import ListView
 from django.contrib import admin
-from .models import Customer,Choosen,Cart,Category,Item,Order
+from .models import Choosen,Cart,Category,Item,Order
 
 # Register your models here.
-@admin.register(Customer)
-class customerAdmin(admin.ModelAdmin):
-    list_display=('id','first_name','email','phone')
-    ordering = ('id',)
-    search_fields=('id','first_name','email','phone')
-    list_per_page= 20
 
 @admin.register(Category)
 class categoryAdmin(admin.ModelAdmin):
