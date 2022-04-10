@@ -27,17 +27,16 @@
             </div>
         
             <!-- Login Form -->
-            <form method="POST">
+            <form method="POST" action="register">
                 {% csrf_token %}
+                <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
+                <input type="text" id="lastname" class="fadeIn second" name="lastname" placeholder="lastname">
+                <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
                 <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
                 <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
                 <input type="submit" class="fadeIn fourth" value="Log In">
             </form>
         
-            <!-- Remind Passowrd -->
-            <div id="formFooter">
-                <a class="underlineHover" href="{% url 'register' %}">Register</a>
-            </div>
         
             </div>
         </div>

@@ -9,13 +9,20 @@
           </button>
         </div>
         <div class="modal-body">
+            <ul>
             {% for item in cart %}
-                <h3>{{ item.item }}</h3><spam>  {{ item.quantity }}</spam>
+              <li><span class="col-md-4">  {{ item.item }} </span><span class="col-md-4"> qty:{{ item.quantity }} </span><span class="col-md-4"> price: {{item.total }} </span></li>
+
             {% endfor %}
+            </ul>
+            <hr>
+            <h4>Total = {{ total }}</h4>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+
+          <a href="{% url 'checkout' %}" class="btn btn-primary" role="button">Pay Order</a>
         </div>
       </div>
     </div>

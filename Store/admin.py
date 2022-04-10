@@ -28,14 +28,14 @@ class cartAdmin(admin.ModelAdmin):
 
 @admin.register(Choosen)
 class choosenAdmin(admin.ModelAdmin):
-    list_display=('id','item','quantity','total')
+    list_display=('id','item','cart','quantity','total')
     ordering = ('id',)
     search_fields=('id','item')
     list_per_page= 20
 
 @admin.register(Order)
 class orderAdmin(admin.ModelAdmin):
-    list_display=('id','item','status')
+    list_display=('id','items','status')
     ordering = ('id',)
     search_fields=('id','item')
     list_per_page= 20
