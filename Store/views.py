@@ -6,12 +6,17 @@ from urllib import request
 from django.shortcuts import redirect, render
 from django.views.generic import ListView
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password, check_password
 from .models import Cart, Item, Choosen, Order
 
 # Create your views here.
 class indexView(ListView):
     model=Item
     template_name='index.html'
+
+class registerView(ListView):
+    model=User
+    template_name='registration/register.html'
 
 class itemsView(ListView):
 
@@ -65,11 +70,11 @@ def addCart(request):
         article=Choosen(item=item,cart=cart_id,quantity=request.POST['qty'],total=total)
         article.save()
     except:
-        cart=Cart(customer=request.POST['id'])
+        cart=Cart(customer=request.user)
         cart.save()
 
         item=Item.objects.get(id=request.POST['id'])
-        total=item.price * request.POST['qty']
+        total=item.price * float(request.POST['qty'])
         article=Choosen(item=request.POST['id'],cart=cart.id,quantity=request.POST['qty'],total=total)
         article.save()
 
@@ -90,6 +95,7 @@ def addOrder(request):
     return redirect('/store')
 
 def registerUser(request):
-    user=User(username=request.POST['username'],first_name=request.POST['name'],last_name=request.POST['lastname'],email=request.POST['email'],password=request.POST['password'])
-
-    return redirect('')
+    newpass=make_password(request.POST['password'])#formatting password
+    user=User(username=request.POST['username'],first_name=request.POST['name'],last_name=request.POST['lastname'],email=request.POST['email'],password=newpass)
+    user.save()
+    return redirect('index')
